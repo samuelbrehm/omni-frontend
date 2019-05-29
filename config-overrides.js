@@ -1,11 +1,11 @@
-const { injectBabelPlugin } = require("react-app-rewired");
+const { override, addBabelPlugin } = require('customize-cra');
 
-const rootImport = [
-  "root-import",
+const rootImport = addBabelPlugin([
+  'root-import',
   {
-    rootPathPrefix: "~",
-    rootPathSuffix: "src"
-  }
-];
+    rootPathPrefix: '~',
+    rootPathSuffix: 'src',
+  },
+]);
 
-module.exports = config => injectBabelPlugin(rootImport, config);
+module.exports = override(rootImport);
